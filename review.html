@@ -386,8 +386,8 @@
 
   <script>
     // ── Supabase
-    const SUPABASE_URL = window.SUPABASE_URL || '';
-    const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || '';
+    const SUPABASE_URL = 'https://jozukjlqhbhhjklpkvza.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpvenVramxxaGJoaGprbHBrdnphIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNDI5NTYsImV4cCI6MjA5MTYxODk1Nn0.ntnf9U9zWhM3sLqYcJ50nV4P5fUAfwofHIoIbY-6pSs';
     let sbClient = null;
     if (SUPABASE_URL && SUPABASE_ANON_KEY) {
       sbClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
