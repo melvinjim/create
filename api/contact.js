@@ -197,7 +197,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'Create & Fabricate <noreply@createfabricate.us.com>',
-        to: ['melvinjimenezan@gmail.com'],
+        to: ['ronaldlondono20@gmail.com'],
         reply_to: email,
         subject: `New Inquiry from ${name} — ${service || 'General'}`,
         html: emailHtml,
