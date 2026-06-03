@@ -22,7 +22,9 @@
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#next-event">Next Event</a></li>
       <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#brands">Brands</a></li>
       <li><a href="#team">Team</a></li>
     </ul>
     <a href="#contact" class="nav-cta-desktop">Get a Quote</a>
@@ -36,13 +38,22 @@
     <a href="#about" class="mob-link">About</a>
     <a href="#services" class="mob-link">Services</a>
     <a href="#portfolio" class="mob-link">Portfolio</a>
+    <a href="#next-event" class="mob-link">Next Event</a>
     <a href="#reviews" class="mob-link">Reviews</a>
+    <a href="#brands" class="mob-link">Brands</a>
     <a href="#team" class="mob-link">Team</a>
     <a href="review.html" class="drawer-cta">⭐ Leave a Review</a>
   </div>
 
   <!-- ===== HERO ===== -->
   <section id="hero">
+    <!-- Slideshow background -->
+    <div class="hero-slides" aria-hidden="true">
+      <div class="hero-slide hero-slide--active" style="background-image:url('images/89.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/image_1.jpeg')"></div>
+      <div class="hero-slide" style="background-image:url('images/image2.jpeg')"></div>
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <p class="hero-tag">Full-Service Fabrication Studio · Miami, FL</p>
       <h1 class="hero-title">
@@ -100,7 +111,7 @@
     </div>
     <div class="about-stats reveal">
       <div class="stat">
-        <div class="stat-number">10</div>
+        <div class="stat-number">6</div>
         <div class="stat-label">Years of Experience</div>
       </div>
       <div class="stat">
@@ -318,18 +329,72 @@
     </div>
   </section>
 
-  <!-- ===== BRANDS ===== -->
-  <section id="brands">
-    <p class="brands-label reveal">Trusted by leading brands</p>
-    <div class="brands-grid reveal">
-      <span class="brand-name">Dove</span>
-      <span class="brand-name">LTK</span>
-      <span class="brand-name">Maybelline</span>
-      <span class="brand-name">Essie</span>
-      <span class="brand-name">Wellpoint</span>
-      <span class="brand-name">Hawaiian Tropic</span>
+  <!-- ===== NEXT EVENT ===== -->
+  <section id="next-event">
+    <!-- Left column: info -->
+    <div class="ne-info reveal">
+      <p class="section-label ne-label">Next Event</p>
+      <h2 class="ne-title">Nobu<br/><em>Miami</em></h2>
+
+      <!-- Date badge -->
+      <div class="ne-date-badge">
+        <div class="ne-date-month">JUN</div>
+        <div class="ne-date-day">04</div>
+        <div class="ne-date-year">2026</div>
+        <div class="ne-date-info">
+          <span class="ne-date-venue">Nobu Eden Roc</span>
+          <span class="ne-date-city">Miami Beach, FL</span>
+        </div>
+      </div>
+
+      <!-- Video CTA -->
+      <div class="ne-video-cta">
+        <p class="ne-video-label">Want to see it come together?</p>
+        <button class="ne-video-btn" id="neVideoBtn">
+          <span class="ne-video-icon">▶</span>
+          Watch Event Video
+        </button>
+      </div>
+    </div>
+
+    <!-- Right column: carousel -->
+    <div class="ne-carousel-wrap reveal">
+      <div class="ne-carousel" id="neCarousel">
+        <div class="ne-slide ne-slide--active">
+          <img src="images/nextEvent1.jpeg" alt="Nobu — Wine Display Wall" loading="lazy" />
+        </div>
+        <div class="ne-slide">
+          <img src="images/nextEvent2.jpeg" alt="Nobu — 619 Brickell Waterfront" loading="lazy" />
+        </div>
+        <div class="ne-slide">
+          <img src="images/nextEvent3.jpeg" alt="Nobu — Draped Arch Backdrop" loading="lazy" />
+        </div>
+      </div>
+      <button class="ne-arrow ne-arrow--prev" id="nePrev" aria-label="Previous">&#8592;</button>
+      <button class="ne-arrow ne-arrow--next" id="neNext" aria-label="Next">&#8594;</button>
+      <div class="ne-dots" id="neDots">
+        <button class="ne-dot ne-dot--active" data-idx="0" aria-label="Photo 1"></button>
+        <button class="ne-dot" data-idx="1" aria-label="Photo 2"></button>
+        <button class="ne-dot" data-idx="2" aria-label="Photo 3"></button>
+      </div>
     </div>
   </section>
+
+  <!-- ===== VIDEO MODAL ===== -->
+  <div class="ne-modal" id="neModal" aria-hidden="true" role="dialog" aria-label="Nobu Event Video">
+    <div class="ne-modal-backdrop" id="neModalBackdrop"></div>
+    <div class="ne-modal-box">
+      <button class="ne-modal-close" id="neModalClose" aria-label="Close video">✕</button>
+      <video
+        id="neVideo"
+        src="images/nextEvent4.mp4"
+        controls
+        playsinline
+        preload="none"
+        class="ne-modal-video"
+      ></video>
+    </div>
+  </div>
 
   <!-- ===== REVIEWS ===== -->
   <section id="reviews">
@@ -378,6 +443,114 @@
         <div class="team-avatar" style="background:var(--sand);overflow:hidden;padding:0;"><img src="data:image/jpeg;base64,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" alt="Yera Dugarte" style="width:100%;height:100%;object-fit:cover;"/></div>
         <div><div class="team-name">Yera Dugarte</div><div class="team-role">Co-Founder</div></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== BRANDS ===== -->
+  <section id="brands">
+    <div class="brands-header reveal">
+      <p class="section-label">Our Clients</p>
+      <h2>Brands we've<br/><em>worked with</em></h2>
+      <p class="brands-sub">Trusted by the world's most iconic names in beauty, tech, fashion, and entertainment.</p>
+    </div>
+
+    <!-- Marquee row 1 — left to right -->
+    <div class="brands-track-wrap" aria-hidden="true">
+      <div class="brands-track brands-track--fwd">
+        <div class="brand-pill">TikTok</div>
+        <div class="brand-pill">Netflix</div>
+        <div class="brand-pill">Apple</div>
+        <div class="brand-pill">Sephora</div>
+        <div class="brand-pill">Dove</div>
+        <div class="brand-pill">Maybelline</div>
+        <div class="brand-pill">Adobe Max</div>
+        <div class="brand-pill">Delta</div>
+        <div class="brand-pill">Neutrogena</div>
+        <div class="brand-pill">Bose</div>
+        <div class="brand-pill">Ulta Beauty</div>
+        <div class="brand-pill">Chase</div>
+        <!-- duplicate for seamless loop -->
+        <div class="brand-pill">TikTok</div>
+        <div class="brand-pill">Netflix</div>
+        <div class="brand-pill">Apple</div>
+        <div class="brand-pill">Sephora</div>
+        <div class="brand-pill">Dove</div>
+        <div class="brand-pill">Maybelline</div>
+        <div class="brand-pill">Adobe Max</div>
+        <div class="brand-pill">Delta</div>
+        <div class="brand-pill">Neutrogena</div>
+        <div class="brand-pill">Bose</div>
+        <div class="brand-pill">Ulta Beauty</div>
+        <div class="brand-pill">Chase</div>
+      </div>
+    </div>
+
+    <!-- Marquee row 2 — right to left -->
+    <div class="brands-track-wrap" aria-hidden="true">
+      <div class="brands-track brands-track--rev">
+        <div class="brand-pill">Yahoo</div>
+        <div class="brand-pill">Omega</div>
+        <div class="brand-pill">Covergirl</div>
+        <div class="brand-pill">Anastasia Beverly Hills</div>
+        <div class="brand-pill">Don Julio</div>
+        <div class="brand-pill">Celsius</div>
+        <div class="brand-pill">Alani</div>
+        <div class="brand-pill">Hawaiian Tropic</div>
+        <div class="brand-pill">Essie</div>
+        <div class="brand-pill">IGK</div>
+        <div class="brand-pill">White Fox</div>
+        <div class="brand-pill">Natura Bissé</div>
+        <!-- duplicate -->
+        <div class="brand-pill">Yahoo</div>
+        <div class="brand-pill">Omega</div>
+        <div class="brand-pill">Covergirl</div>
+        <div class="brand-pill">Anastasia Beverly Hills</div>
+        <div class="brand-pill">Don Julio</div>
+        <div class="brand-pill">Celsius</div>
+        <div class="brand-pill">Alani</div>
+        <div class="brand-pill">Hawaiian Tropic</div>
+        <div class="brand-pill">Essie</div>
+        <div class="brand-pill">IGK</div>
+        <div class="brand-pill">White Fox</div>
+        <div class="brand-pill">Natura Bissé</div>
+      </div>
+    </div>
+
+    <!-- Marquee row 3 — left to right, slower -->
+    <div class="brands-track-wrap" aria-hidden="true">
+      <div class="brands-track brands-track--fwd brands-track--slow">
+        <div class="brand-pill">Miami Swim Week</div>
+        <div class="brand-pill">Nikki Beach</div>
+        <div class="brand-pill">Saltair</div>
+        <div class="brand-pill">Hanni</div>
+        <div class="brand-pill">Pixi</div>
+        <div class="brand-pill">Adore Me</div>
+        <div class="brand-pill">Trubar</div>
+        <div class="brand-pill">Buffalo</div>
+        <div class="brand-pill">Wellpoint</div>
+        <div class="brand-pill">Daou</div>
+        <div class="brand-pill">Monarca Ulje</div>
+        <div class="brand-pill">Stay Fit</div>
+        <!-- duplicate -->
+        <div class="brand-pill">Miami Swim Week</div>
+        <div class="brand-pill">Nikki Beach</div>
+        <div class="brand-pill">Saltair</div>
+        <div class="brand-pill">Hanni</div>
+        <div class="brand-pill">Pixi</div>
+        <div class="brand-pill">Adore Me</div>
+        <div class="brand-pill">Trubar</div>
+        <div class="brand-pill">Buffalo</div>
+        <div class="brand-pill">Wellpoint</div>
+        <div class="brand-pill">Daou</div>
+        <div class="brand-pill">Monarca Ulje</div>
+        <div class="brand-pill">Stay Fit</div>
+      </div>
+    </div>
+
+    <!-- Count callout -->
+    <div class="brands-count reveal">
+      <span class="brands-count-num">43<em>+</em></span>
+      <span class="brands-count-label">brands & counting</span>
     </div>
   </section>
 
