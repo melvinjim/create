@@ -227,3 +227,134 @@
     function formatDate(iso)    { return new Date(iso).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}); }
 
     loadReviews();
+
+    // ── Language Switcher ──
+    let currentLang = 'en';
+
+    // Placeholders map EN → ES
+    const PLACEHOLDER_ES = {
+      'Your full name': 'Tu nombre completo',
+      'your@email.com': 'tu@correo.com',
+      '+1 (786) 000-0000': '+1 (786) 000-0000',
+      'Tell us about your project, timeline, and budget…': 'Cuéntanos sobre tu proyecto, tiempos y presupuesto…',
+    };
+    const PLACEHOLDER_EN = Object.fromEntries(Object.entries(PLACEHOLDER_ES).map(([k,v])=>[v,k]));
+
+    function applyLanguage(lang) {
+      // 1. All [data-en] elements
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = lang === 'en' ? el.dataset.en : el.dataset.es;
+        if (!text) return;
+        // Tags that should not lose child nodes: headings with <br>/<em>
+        const tag = el.tagName.toLowerCase();
+        if (['h1','h2','h3','h4','blockquote'].includes(tag) && el.innerHTML.includes('<')) {
+          // Only update if no child elements (safe swap)
+          if (!el.querySelector('*')) el.textContent = text;
+          // else leave inner HTML — heading content stays styled
+        } else {
+          el.textContent = text;
+        }
+      });
+
+      // 2. Input / textarea placeholders
+      const pm = lang === 'en' ? PLACEHOLDER_EN : PLACEHOLDER_ES;
+      document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
+        const cur = el.getAttribute('placeholder');
+        if (pm[cur]) el.setAttribute('placeholder', pm[cur]);
+      });
+
+      // 3. Select options
+      document.querySelectorAll('select option[data-en]').forEach(opt => {
+        opt.textContent = lang === 'en' ? opt.dataset.en : opt.dataset.es;
+      });
+
+      // 4. Toggle button label
+      document.querySelectorAll('.lang-toggle, .lang-toggle-mobile').forEach(t => {
+        t.textContent = lang === 'en' ? 'EN / ES' : 'ES / EN';
+      });
+
+      // 5. html lang attribute
+      document.documentElement.lang = lang;
+
+      // 6. Store
+      try { localStorage.setItem('cf_lang', lang); } catch(e) {}
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'es' : 'en';
+      applyLanguage(currentLang);
+    }
+
+    // Restore on load
+    try {
+      const saved = localStorage.getItem('cf_lang');
+      if (saved && saved !== currentLang) {
+        currentLang = saved;
+        // Wait for DOM
+        document.addEventListener('DOMContentLoaded', () => applyLanguage(currentLang), { once: true });
+        // Also run now in case DOM is ready
+        if (document.readyState !== 'loading') applyLanguage(currentLang);
+      }
+    } catch(e) {}
+
+    document.getElementById('langToggle')?.addEventListener('click', toggleLanguage);
+    document.getElementById('langToggleMobile')?.addEventListener('click', toggleLanguage);
+
+    // ── Gallery Modal ──
+    const galleryImages = {
+      'brand-activations': ['images/info1_2.jpeg','images/info1_3.jpeg','images/info1.jpeg','images/info1_4.jpeg','images/info1_5.jpeg'],
+      'signage': ['images/info2.jpeg','images/info2_1.jpeg','images/info2_2.jpeg','images/info2_3.jpeg','images/info2_4.jpeg'],
+      'fabrication': ['images/info3.jpeg','images/info3_1.jpeg','images/info3_2.jpeg','images/info3_3.jpeg','images/info3_4.jpeg'],
+      'decor': ['images/info4.jpeg','images/info4_1.jpeg','images/info4_2.jpeg','images/info4_3.jpeg','images/info4_4.jpeg'],
+      'draping': ['images/info5.jpeg','images/info5_1.jpeg','images/info5_2.jpeg','images/info5_3.jpeg','images/info5_4.jpeg'],
+      'production': ['images/info6.jpeg','images/info6_1.jpeg'],
+    };
+    const galleryNames = {
+      'brand-activations': 'Brand Activations & Experiential Marketing',
+      'signage': 'Signage & Visual Branding',
+      'fabrication': 'Custom Fabrication',
+      'decor': 'Event Décor & Installations',
+      'draping': 'Draping & Soft Goods',
+      'production': 'End-to-End Production',
+    };
+    let galleryCurrent = 0;
+    let galleryActive = [];
+
+    function openGallery(key) {
+      galleryActive = galleryImages[key] || [];
+      galleryCurrent = 0;
+      document.getElementById('galleryTitle').textContent = galleryNames[key] || '';
+      renderGallerySlide();
+      document.getElementById('galleryOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeGallery(event, force) {
+      if (!force && event && event.target !== document.getElementById('galleryOverlay')) return;
+      document.getElementById('galleryOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function renderGallerySlide() {
+      const slides = document.getElementById('gallerySlides');
+      slides.innerHTML = galleryActive.length
+        ? `<img src="${galleryActive[galleryCurrent]}" alt="Gallery image" />`
+        : '<div style="color:rgba(232,226,217,0.3);padding:40px;font-size:0.85rem;letter-spacing:0.1em;">No images available yet</div>';
+      const counter = document.getElementById('galleryCounter');
+      if (counter) counter.textContent = galleryActive.length ? `${galleryCurrent + 1} / ${galleryActive.length}` : '';
+    }
+    function galleryPrev() {
+      if (!galleryActive.length) return;
+      galleryCurrent = (galleryCurrent - 1 + galleryActive.length) % galleryActive.length;
+      renderGallerySlide();
+    }
+    function galleryNext() {
+      if (!galleryActive.length) return;
+      galleryCurrent = (galleryCurrent + 1) % galleryActive.length;
+      renderGallerySlide();
+    }
+    document.addEventListener('keydown', e => {
+      if (document.getElementById('galleryOverlay')?.classList.contains('open')) {
+        if (e.key === 'Escape') closeGallery(null, true);
+        if (e.key === 'ArrowLeft') galleryPrev();
+        if (e.key === 'ArrowRight') galleryNext();
+      }
+    });
