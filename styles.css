@@ -242,9 +242,40 @@
     }
     .hero-title em { font-style: italic; color: rgba(255,255,255,0.5); }
     .hero-sub {
-      margin-top: 24px; font-size: clamp(0.82rem, 3.5vw, 0.95rem);
-      font-weight: 300; line-height: 1.75; color: rgba(255,255,255,0.72);
-      max-width: 480px; opacity: 0; animation: fadeUp 0.9s ease 0.6s forwards;
+      margin-top: 24px;
+      max-width: 520px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.6s forwards;
+    }
+    .hero-sub-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 14px;
+    }
+    .hero-sub-line1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.45rem, 4vw, 2rem);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.15;
+    }
+    .hero-sub-line2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.45rem, 4vw, 2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.15;
+    }
+    .hero-sub-body {
+      font-size: clamp(0.78rem, 2.5vw, 0.88rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.75;
+      margin: 0;
     }
     .hero-actions {
       margin-top: 36px;
@@ -1232,7 +1263,6 @@
       font-size: 0.88rem;
       color: var(--cream);
       text-decoration: none;
-      display: block;
       transition: color 0.2s;
     }
     .contact-item-value:active { color: var(--accent); }
