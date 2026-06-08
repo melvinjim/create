@@ -677,13 +677,65 @@
       background: #13120f;
       overflow: hidden;
     }
-    .brands-header { text-align: center; padding: 0 20px; margin-bottom: 60px; }
+    .brands-header { text-align: center; padding: 0 20px; margin-bottom: 48px; }
     .brands-header h2 {
       font-family: 'Cormorant Garamond', serif; font-weight: 300;
       font-size: clamp(2.4rem, 8vw, 4rem); color: var(--cream);
       line-height: 1.05; margin-bottom: 16px;
     }
     .brands-header h2 em { font-style: italic; color: var(--warm-gray); }
+
+    /* ── Featured logos ── */
+    .brands-featured {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+      border-top: 1px solid rgba(232,226,217,0.08);
+      border-bottom: 1px solid rgba(232,226,217,0.08);
+      margin-bottom: 48px;
+    }
+    .brands-featured-item {
+      flex: 1 1 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 24px;
+      border-right: 1px solid rgba(232,226,217,0.08);
+      transition: background 0.25s;
+    }
+    .brands-featured-item:last-child { border-right: none; }
+    .brands-featured-item:hover { background: rgba(232,226,217,0.04); }
+    .brands-featured-item svg {
+      width: auto;
+      height: 28px;
+      color: rgba(232,226,217,0.35);
+      transition: color 0.25s;
+      display: block;
+    }
+    .brands-featured-item:hover svg { color: rgba(232,226,217,0.75); }
+    .brands-featured-item--text span {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.8rem, 2vw, 1.05rem);
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(232,226,217,0.35);
+      transition: color 0.25s;
+      white-space: nowrap;
+    }
+    .brands-featured-item--text:hover span { color: rgba(232,226,217,0.75); }
+    /* Mobile: 3 per row */
+    @media (max-width: 600px) {
+      .brands-featured-item { flex: 1 1 calc(33.33% - 1px); padding: 22px 12px; }
+      .brands-featured-item:nth-child(3) { border-right: none; }
+      .brands-featured-item:nth-child(4) { border-top: 1px solid rgba(232,226,217,0.08); }
+      .brands-featured-item:nth-child(6) { border-right: none; }
+      .brands-featured-item svg { height: 22px; }
+    }
+
+
     .brands-sub { font-size: 0.85rem; color: rgba(232,226,217,0.4); max-width: 420px; margin: 0 auto; line-height: 1.7; }
     .brands-track-wrap {
       width: 100%; overflow: hidden; margin-bottom: 14px;
