@@ -311,12 +311,12 @@ document.getElementById('langToggleMobile')?.addEventListener('click', toggleLan
 
 // ── Gallery Modal ──
 const galleryImages = {
-  'brand-activations': ['images/info1_2.jpeg', 'images/info1_3.jpeg', 'images/info1.jpeg', 'images/info1_4.jpeg', 'images/info1_5.jpeg'],
-  'signage': ['images/info2.jpeg', 'images/info2_1.jpeg', 'images/info2_2.jpeg', 'images/info2_3.jpeg', 'images/info2_4.jpeg'],
-  'fabrication': ['images/info3.jpeg', 'images/info3_1.jpeg', 'images/info3_2.jpeg', 'images/info3_3.jpeg', 'images/info3_4.jpeg'],
-  'decor': ['images/info4.jpeg', 'images/info4_1.jpeg', 'images/info4_2.jpeg', 'images/info4_3.jpeg', 'images/info4_4.jpeg'],
-  'draping': ['images/info5.jpeg', 'images/info5_1.jpeg', 'images/info5_2.jpeg', 'images/info5_3.jpeg', 'images/info5_4.jpeg'],
-  'production': ['images/info6.jpeg', 'images/info6_1.jpeg'],
+  'brand-activations': ['https://res.cloudinary.com/dj9itvbc8/image/upload/v1780962044/info1_5_te6wy3.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780962043/info1_4_vtetnw.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780962043/info1_3_hnq0x4.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780962042/info1_2_qedahk.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780962042/info1_c05za7.png'],
+  'signage': ['https://res.cloudinary.com/dj9itvbc8/image/upload/v1780962542/info2_6_nd6jxn.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780962541/info2_5_paen3f.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780962540/info2_4_anxg1b.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780962539/info2_3_cxesp9.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780962539/info2_2_ixxrtt.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780962538/info2_mml4ut.png'],
+  'fabrication': ['https://res.cloudinary.com/dj9itvbc8/image/upload/v1780963756/info3_6_axqyqy.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780963755/info3_5_zikc2h.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780963753/info3_4_icghxi.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780963752/info3_3_vqvje3.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780963752/info3_2_hc7gls.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780963751/info3_rozdvc.png'],
+  'decor': ['https://res.cloudinary.com/dj9itvbc8/image/upload/v1780964054/info4_6_otoxbi.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780964052/info4_5_ralmk9.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780964051/info4_4_h4mxze.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780964050/info4_2_afzjev.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780964050/info4_3_zpsosx.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780964048/info4_vekfkx.png'],
+  'draping': ['https://res.cloudinary.com/dj9itvbc8/image/upload/v1780966473/info5_5_xe6ax0.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780966472/info5_2_ttti6g.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780966471/info5_1_hwlut3.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780966470/info5_znqmac.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780967013/info5_4_v6jbkt.png'],
+  'production': ['https://res.cloudinary.com/dj9itvbc8/image/upload/v1780966617/info6_rtrdvb.png', 'https://res.cloudinary.com/dj9itvbc8/image/upload/v1780966618/info6_1_bcyrzq.png'],
 };
 const galleryNames = {
   'brand-activations': 'Brand Activations & Experiential Marketing',
